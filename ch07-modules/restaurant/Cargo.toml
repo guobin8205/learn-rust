@@ -1,0 +1,12 @@
+[package]
+name = "restaurant"
+version = "0.1.0"
+edition = "2024"
+default-run = "restaurant"    # ← 添加：cargo run 默认运行 restaurant
+
+[dependencies]
+
+# 第二个 bin target：演示 use 高级用法
+[[bin]]
+name = "use_advanced"
+path = "src/use_advanced.rs"

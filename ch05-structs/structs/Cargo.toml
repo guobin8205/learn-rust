@@ -1,0 +1,18 @@
+[package]
+name = "structs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[[bin]]
+name = "defining"
+path = "src/defining.rs"
+
+[[bin]]
+name = "methods"
+path = "src/methods.rs"
+
+[[bin]]
+name = "debug_trait"
+path = "src/debug_trait.rs"
