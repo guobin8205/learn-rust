@@ -1,0 +1,18 @@
+[package]
+name = "ownership"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[[bin]]
+name = "ownership_rules"
+path = "src/ownership_rules.rs"
+
+[[bin]]
+name = "borrowing"
+path = "src/borrowing.rs"
+
+[[bin]]
+name = "slices"
+path = "src/slices.rs"

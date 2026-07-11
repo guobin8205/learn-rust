@@ -1,0 +1,16 @@
+# Rust 编译产物
+/target/
+
+# 子项目（每个章节）的编译产物
+**/target/
+
+# Cargo.lock 对于二进制项目保留，对于库项目可忽略
+# 这里是学习项目（二进制），保留 Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

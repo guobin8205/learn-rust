@@ -1,0 +1,24 @@
+[package]
+name = "concepts"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+# 多个可执行文件：每个 src/ 下的 .rs（除 main.rs）都是一个独立的 bin target
+# 用 cargo run --bin <名字> 运行指定的例子
+[[bin]]
+name = "variables"
+path = "src/variables.rs"
+
+[[bin]]
+name = "data_types"
+path = "src/data_types.rs"
+
+[[bin]]
+name = "functions"
+path = "src/functions.rs"
+
+[[bin]]
+name = "control_flow"
+path = "src/control_flow.rs"
