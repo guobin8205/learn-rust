@@ -1,0 +1,19 @@
+[package]
+name = "patterns"
+version = "0.1.0"
+edition = "2024"
+default-run = "positions"
+
+[dependencies]
+
+[[bin]]
+name = "positions"
+path = "src/positions.rs"
+
+[[bin]]
+name = "syntax"
+path = "src/syntax.rs"
+
+[[bin]]
+name = "advanced"
+path = "src/advanced.rs"

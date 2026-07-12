@@ -1,0 +1,19 @@
+[package]
+name = "advanced"
+version = "0.1.0"
+edition = "2024"
+default-run = "unsafe_t"
+
+[dependencies]
+
+[[bin]]
+name = "unsafe_t"
+path = "src/unsafe_t.rs"
+
+[[bin]]
+name = "advanced_traits"
+path = "src/advanced_traits.rs"
+
+[[bin]]
+name = "advanced_types"
+path = "src/advanced_types.rs"
