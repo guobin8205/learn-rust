@@ -1,0 +1,19 @@
+[package]
+name = "functional"
+version = "0.1.0"
+edition = "2024"
+default-run = "closures"
+
+[dependencies]
+
+[[bin]]
+name = "closures"
+path = "src/closures.rs"
+
+[[bin]]
+name = "iterators"
+path = "src/iterators.rs"
+
+[[bin]]
+name = "refactor"
+path = "src/refactor.rs"
