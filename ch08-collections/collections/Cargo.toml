@@ -1,0 +1,19 @@
+[package]
+name = "collections"
+version = "0.1.0"
+edition = "2024"
+default-run = "vec_t"
+
+[dependencies]
+
+[[bin]]
+name = "vec_t"
+path = "src/vec_t.rs"
+
+[[bin]]
+name = "string_t"
+path = "src/string_t.rs"
+
+[[bin]]
+name = "hashmap_t"
+path = "src/hashmap_t.rs"

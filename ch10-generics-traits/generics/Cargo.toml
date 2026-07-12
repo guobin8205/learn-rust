@@ -1,0 +1,19 @@
+[package]
+name = "generics"
+version = "0.1.0"
+edition = "2024"
+default-run = "generics_t"
+
+[dependencies]
+
+[[bin]]
+name = "generics_t"
+path = "src/generics_t.rs"
+
+[[bin]]
+name = "trait_t"
+path = "src/trait_t.rs"
+
+[[bin]]
+name = "lifetime_t"
+path = "src/lifetime_t.rs"

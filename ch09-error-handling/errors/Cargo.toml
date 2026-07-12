@@ -1,0 +1,19 @@
+[package]
+name = "errors"
+version = "0.1.0"
+edition = "2024"
+default-run = "panic_t"
+
+[dependencies]
+
+[[bin]]
+name = "panic_t"
+path = "src/panic_t.rs"
+
+[[bin]]
+name = "result_t"
+path = "src/result_t.rs"
+
+[[bin]]
+name = "question_mark"
+path = "src/question_mark.rs"
