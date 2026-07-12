@@ -1,0 +1,19 @@
+[package]
+name = "oo_features"
+version = "0.1.0"
+edition = "2024"
+default-run = "trait_objects"
+
+[dependencies]
+
+[[bin]]
+name = "trait_objects"
+path = "src/trait_objects.rs"
+
+[[bin]]
+name = "object_safety"
+path = "src/object_safety.rs"
+
+[[bin]]
+name = "oo_patterns"
+path = "src/oo_patterns.rs"

@@ -215,7 +215,80 @@ vec.iter()                    // 创建
 
 > 这一节会随着学习过程中的提问持续更新。
 
-（暂无提问）
+### Q1：模拟生成器闭包的状态值保存在哪里？不是违反生命周期吗？
+
+**A：** 闭包本质是「匿名结构体」，捕获的变量成了结构体字段。`move` 关键字把变量所有权搬进闭包，所以不会违反生命周期。
+
+#### 闭包的本质：匿名结构体
+```rust
+// 你写的代码
+let mut count = start;
+move || { let r = count; count += 1; r }
+
+// 编译器实际生成的
+struct Closure { count: u32 }            // ← count 成了结构体字段！
+impl FnMut<()> for Closure {
+    fn call_mut(&mut self) -> u32 {
+        let r = self.count;
+        self.count += 1;
+        r
+    }
+}
+```
+
+#### 为什么不违反生命周期？move 转移所有权
+```rust
+fn generate_counter(start: u32) -> Box<dyn FnMut() -> u32> {
+    let mut count = start;
+    Box::new(move || { ... })
+    //  ↑ move 把 count 的所有权搬进闭包
+    //    函数返回时，count 跟着闭包（被 Box 包裹）一起返回，不会悬垂
+}
+```
+
+#### 内存布局
+```
+栈：counter → Box 指针 ─┐
+                       ↓
+堆：闭包结构体 { count: u32 }   ← count 存在这里
+```
+
+#### 对比两种情况
+```
+❌ 不用 move（借用）：违反生命周期
+   fn bad() -> impl FnMut() -> i32 {
+       let count = 0;
+       || { count += 1 }   // 闭包引用 count，函数结束 count drop → 悬垂！
+   }
+
+✅ 用 move（转移所有权）：合法
+   fn good() -> Box<dyn FnMut() -> u32> {
+       let count = 0;
+       Box::new(move || { count += 1 })
+       // count 的所有权转移进闭包，跟着返回，不悬垂
+   }
+```
+
+#### 验证：两个闭包有独立状态
+```
+c1() = 100   ← c1 的 count
+c1() = 101   ← c1 自增
+c2() = 200   ← c2 有独立的 count
+```
+
+#### 为什么需要 Box？
+- `Box` 把闭包放在堆上，函数才能返回它
+- `dyn FnMut` 因为每个闭包是不同类型，编译期大小未知，用 trait 对象统一
+
+#### 核心认知
+| 疑问 | 答案 |
+|------|------|
+| count 存哪里？ | 闭包结构体的字段里（Box 放堆上） |
+| 违反生命周期吗？ | 不，move 转移了所有权 |
+| 函数返回后还在吗？ | 在，跟着闭包一起返回 |
+
+#### 串联第 4 章
+`move` 就是「强制把闭包用到的所有变量所有权转移进闭包」，和函数参数的 move 是同一机制。
 
 ---
 

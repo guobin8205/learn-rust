@@ -1,0 +1,34 @@
+# ===== 14.1 Workspace 工作空间 =====
+# 一个 workspace 包含多个相关的 crate，共享同一个 Cargo.lock 和 target 目录
+
+[workspace]
+members = [
+    "adder",        # 二进制 crate
+    "add_one", "bench_demo",      # 库 crate
+]
+resolver = "2"
+
+# workspace 的好处：
+# 1. 多个 crate 共享同一个 Cargo.lock（版本统一）
+# 2. 共享同一个 target/ 目录（节省编译时间和空间）
+# 3. crate 之间可以互相依赖
+
+# ⭐ workspace 和 package 的区别：
+#   package  = 一个 Cargo.toml 对应一个项目（含 1-多个 crate）
+#   workspace = 多个 package 的集合，统一管理
+
+# ========================================================
+# 14.2 Release Profile（编译配置）
+# ========================================================
+# profile 控制编译器的优化级别，必须放在 workspace 根
+[profile.dev]
+opt-level = 0        # 开发时：不优化，编译快（默认）
+
+[profile.release]
+opt-level = 3        # 发布时：最大优化，运行快（默认）
+# 其他可调选项：
+# opt-level：0（不优化）~ 3（最大优化）、's'（优化大小）、'z'（最小大小）
+# debug：true/false（是否保留调试信息）
+# panic：'unwind'（展开）/ 'abort'（直接终止）
+# lto：true/false（链接时优化，release 用可提升性能）
+

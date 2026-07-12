@@ -1,0 +1,23 @@
+[package]
+name = "smart_pointers"
+version = "0.1.0"
+edition = "2024"
+default-run = "box_t"
+
+[dependencies]
+
+[[bin]]
+name = "box_t"
+path = "src/box_t.rs"
+
+[[bin]]
+name = "deref_t"
+path = "src/deref_t.rs"
+
+[[bin]]
+name = "rc_t"
+path = "src/rc_t.rs"
+
+[[bin]]
+name = "refcell_t"
+path = "src/refcell_t.rs"

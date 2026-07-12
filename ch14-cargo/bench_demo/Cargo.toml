@@ -1,0 +1,16 @@
+[package]
+name = "bench_demo"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+# criterion 用于基准测试（dev-dependencies 只在开发时用）
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+
+# 声明 benchmark target
+# harness = false：禁用内置 test harness，用 criterion 的
+[[bench]]
+name = "iter_vs_loop"
+harness = false

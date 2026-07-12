@@ -6,7 +6,7 @@
 // ========================================================
 
 use std::thread;
-use std::time::Duration;
+// use std::time::Duration;
 
 fn main() {
     println!("===== 1. 闭包基本语法 =====\n");
@@ -46,7 +46,7 @@ fn main() {
 
     println!("\n===== 3. 捕获的三种方式（Fn / FnMut / FnOnce）=====\n");
 
-    let mut count = 0;
+    // let mut count = 0;
 
     // ① 不可变借用（Fn）：只读访问
     let list = vec![1, 2, 3];

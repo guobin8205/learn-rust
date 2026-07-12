@@ -1,0 +1,23 @@
+[package]
+name = "concurrency"
+version = "0.1.0"
+edition = "2024"
+default-run = "threads"
+
+[dependencies]
+
+[[bin]]
+name = "threads"
+path = "src/threads.rs"
+
+[[bin]]
+name = "channels"
+path = "src/channels.rs"
+
+[[bin]]
+name = "shared_state"
+path = "src/shared_state.rs"
+
+[[bin]]
+name = "send_sync"
+path = "src/send_sync.rs"
